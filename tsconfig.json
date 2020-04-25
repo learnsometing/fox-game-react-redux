@@ -3,11 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
-    "lib": [
-      "DOM",
-      "ES2015",
-      "ES2017"
-    ],
+    "lib": ["DOM", "ES2015", "ES2017"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -26,6 +22,7 @@
   },
   "include": [
     "./src/**/*.ts",
-    "./src/**/*.tsx", "src/features/counter/Counter.js"
+    "./src/**/*.tsx",
+    "src/features/counter/Counter.js"
   ]
 }

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import clockReducer from '../features/Clock/clockSlice';
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    clock: clockReducer,
   },
 });
