@@ -54,10 +54,10 @@ const Scene: React.FC = () => {
   const [scene, setScene] = useState(<Sunny />);
   useEffect(() => {
     switch (current) {
-      case 'NIGHT':
+      case 2:
         setScene(<Night />);
         break;
-      case 'RAINY':
+      case 1:
         setScene(
           <>
             <Rainy />
@@ -65,7 +65,7 @@ const Scene: React.FC = () => {
           </>
         );
         break;
-      case 'DEAD':
+      case 3:
         setScene(<Dead />);
         break;
       default:

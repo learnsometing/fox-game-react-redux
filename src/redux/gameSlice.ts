@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const RAIN_CHANCE = 1;
 const DAY_LENGTH = 60;
 const NIGHT_LENGTH = 3;
-
 const getNextHungerTime = (clock: number) =>
   Math.floor(Math.random() * 3) + 5 + clock;
 const getNextDieTime = (clock: number) =>
@@ -15,7 +14,7 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState: {
     current: 'INIT',
-    scene: 'SUNNY',
+    scene: 0,
     clock: 1,
     wakeTime: -1,
     sleepTime: -1,
@@ -33,22 +32,22 @@ export const gameSlice = createSlice({
     startGame: (state) => {
       state.current = 'HATCHING';
       state.wakeTime = state.clock + 3;
-      state.scene = 'SUNNY';
+      state.scene = 0;
     },
     wake: (state) => {
       state.current = 'IDLING';
       state.wakeTime = -1;
-      state.scene = Math.random() > RAIN_CHANCE ? 'SUNNY' : 'RAINY';
+      state.scene = Math.random() > RAIN_CHANCE ? 0 : 1;
       state.sleepTime = state.clock + DAY_LENGTH;
       state.hungryTime = getNextHungerTime(state.clock);
     },
     sleep: (state) => {
       state.current = 'SLEEPING';
-      state.scene = 'NIGHT';
+      state.scene = 2;
       state.wakeTime = state.clock + NIGHT_LENGTH;
     },
-    changeWeather() {
-      console.log('changeWeather');
+    changeWeather: (state) => {
+      state.scene = (1 + state.scene) % 2;
     },
     cleanUpPoop: (state) => {
       state.dieTime = -1;

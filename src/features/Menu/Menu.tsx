@@ -45,7 +45,7 @@ const Menu: React.FC = () => {
     //execute the currently selected action
     switch (icon) {
       case 'weather-icon':
-        dispatch(changeWeather());
+        if (current !== 'DEAD') dispatch(changeWeather());
         break;
       case 'poop-icon':
         if (current === 'POOPING') {

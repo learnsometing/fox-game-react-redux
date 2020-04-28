@@ -175,7 +175,7 @@ const Fox: React.FC = () => {
         setFox(<HatchingFox />);
         break;
       case 'IDLING':
-        if (scene === 'RAINY') {
+        if (scene === 1) {
           setFox(<WetFox />);
         } else {
           setFox(<IdlingFox />);
