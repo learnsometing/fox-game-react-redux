@@ -9,6 +9,7 @@ import {
   changeWeather,
   cleanUpPoop,
   feed,
+  startCelebrating,
 } from '../../redux/gameSlice';
 
 // gameSlice selectors
@@ -47,11 +48,13 @@ const Menu: React.FC = () => {
         dispatch(changeWeather());
         break;
       case 'poop-icon':
-        dispatch(cleanUpPoop());
+        if (current === 'POOPING') {
+          dispatch(cleanUpPoop());
+          dispatch(startCelebrating());
+        }
         break;
       case 'fish-icon':
-        if (current !== 'HUNGRY') break;
-        dispatch(feed());
+        if (current === 'HUNGRY') dispatch(feed());
         break;
     }
   }

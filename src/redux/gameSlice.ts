@@ -8,8 +8,8 @@ const getNextHungerTime = (clock: number) =>
   Math.floor(Math.random() * 3) + 5 + clock;
 const getNextDieTime = (clock: number) =>
   Math.floor(Math.random() * 2) + 3 + clock;
-// const getNextPoopTime = (clock: number) =>
-//   Math.floor(Math.random() * 3) + 4 + clock;
+const getNextPoopTime = (clock: number) =>
+  Math.floor(Math.random() * 3) + 4 + clock;
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -21,8 +21,10 @@ export const gameSlice = createSlice({
     sleepTime: -1,
     hungryTime: -1,
     dieTime: -1,
+    poopTime: -1,
     timeToStartCelebrating: -1,
     timeToEndCelebrating: -1,
+    togglePoopBag: false,
   },
   reducers: {
     incrementClock: (state) => {
@@ -48,13 +50,15 @@ export const gameSlice = createSlice({
     changeWeather() {
       console.log('changeWeather');
     },
-    cleanUpPoop() {
-      console.log('cleanUpPoop');
+    cleanUpPoop: (state) => {
+      state.dieTime = -1;
+      state.hungryTime = getNextHungerTime(state.clock);
+      state.togglePoopBag = true;
     },
     feed: (state) => {
       state.current = 'FEEDING';
       state.dieTime = -1;
-      // state.poopTime = getNextPoopTime(state.clock);
+      state.poopTime = getNextPoopTime(state.clock);
       state.timeToStartCelebrating = state.clock + 2;
     },
     getHungry: (state) => {
@@ -73,6 +77,12 @@ export const gameSlice = createSlice({
     endCelebrating: (state) => {
       state.current = 'IDLING';
       state.timeToEndCelebrating = -1;
+      state.togglePoopBag = false;
+    },
+    poop: (state) => {
+      state.current = 'POOPING';
+      state.poopTime = -1;
+      state.dieTime = getNextDieTime(state.clock);
     },
   },
 });
@@ -89,6 +99,7 @@ export const {
   // die,
   startCelebrating,
   endCelebrating,
+  poop,
 } = gameSlice.actions;
 
 export const selectCurrent = (state: any) => state.current;
@@ -102,5 +113,6 @@ export const selectStartCelebratingTime = (state: any) =>
   state.timeToStartCelebrating;
 export const selectEndCelebratingTime = (state: any) =>
   state.timeToEndCelebrating;
-
+export const selectPoopTime = (state: any) => state.poopTime;
+export const selectTogglePoopBag = (state: any) => state.togglePoopBag;
 export default gameSlice.reducer;

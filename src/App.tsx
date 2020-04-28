@@ -27,6 +27,8 @@ import {
   startCelebrating,
   selectEndCelebratingTime,
   endCelebrating,
+  poop,
+  selectPoopTime,
 } from './redux/gameSlice';
 
 const Container = styled.div`
@@ -54,6 +56,7 @@ function App() {
   const dieTime = useSelector(selectDieTime);
   const startCelebratingTime = useSelector(selectStartCelebratingTime);
   const endCelebratingTime = useSelector(selectEndCelebratingTime);
+  const poopTime = useSelector(selectPoopTime);
 
   useEffect(() => {
     function tick() {
@@ -70,6 +73,8 @@ function App() {
         dispatch(startCelebrating());
       } else if (clock === endCelebratingTime) {
         dispatch(endCelebrating());
+      } else if (clock === poopTime) {
+        dispatch(poop());
       }
     }
 
@@ -83,7 +88,7 @@ function App() {
       <Inner>
         <Scene />
         <Fox />
-        <PoopBag isHidden={true} />
+        <PoopBag />
         <Frame />
         <Modal />
         <Menu />

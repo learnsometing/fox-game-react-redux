@@ -8,6 +8,7 @@ import wet from './pet/Rain.png';
 import hungry from './pet/Hungry.png';
 import eating from './pet/Eating.png';
 import celebrating from './pet/Yay.png';
+import pooping from './pet/Pooping.png';
 import { selectCurrent, selectScene } from '../../redux/gameSlice';
 
 const InitFox = styled.div`
@@ -142,6 +143,27 @@ const CelebratingFox = styled(InitFox)`
   }
 `;
 
+const PoopingFox = styled(InitFox)`
+  display: block;
+  top: 319px;
+  left: 159px;
+  background-image: url(${pooping});
+  background-position: -1836px;
+  background-repeat: no-repeat;
+  width: 204px;
+  height: 202px;
+  animation: pooping 5s steps(10);
+
+  @keyframes pooping {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: -2040px;
+    }
+  }
+`;
+
 const Fox: React.FC = () => {
   const current = useSelector(selectCurrent);
   const scene = useSelector(selectScene);
@@ -170,6 +192,9 @@ const Fox: React.FC = () => {
         break;
       case 'CELEBRATING':
         setFox(<CelebratingFox />);
+        break;
+      case 'POOPING':
+        setFox(<PoopingFox />);
         break;
     }
   }, [current, scene]);

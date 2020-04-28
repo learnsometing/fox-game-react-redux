@@ -1,12 +1,15 @@
+import React from 'react';
 import styled from 'styled-components';
 import poopBag from './PoopBag.png';
+import { useSelector } from 'react-redux';
+import { selectTogglePoopBag } from '../../redux/gameSlice';
 
 interface Props {
-  isHidden: boolean;
+  togglePoopBag: boolean;
 }
 
 const PoopBag = styled.div<Props>`
-  display: ${(props) => (props.isHidden ? 'none' : 'block')};
+  display: ${(props) => (props.togglePoopBag ? 'block' : 'none')};
   position: absolute;
   top: 300px;
   left: 160px;
@@ -23,4 +26,10 @@ const PoopBag = styled.div<Props>`
   }
 `;
 
-export default PoopBag;
+const ConnectedPoopBag: React.FC = () => {
+  const togglePoopBag = useSelector(selectTogglePoopBag);
+
+  return <PoopBag togglePoopBag={togglePoopBag} />;
+};
+
+export default ConnectedPoopBag;
