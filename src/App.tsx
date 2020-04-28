@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+
 import './App.css';
 import './sprites.css';
+
 import Game from './features/Game/Game';
 import Fox from './features/Fox/Fox';
 import PoopBag from './features/PoopBag/PoopBag';
@@ -10,7 +12,13 @@ import Foreground from './features/Foreground/Foreground';
 import Frame from './features/Frame/Frame';
 import Modal from './features/Modal/Modal';
 import Menu from './features/Menu/Menu';
-import { increment } from './features/Clock/clockSlice';
+
+import {
+  incrementClock,
+  selectClock,
+  wake,
+  selectWakeTime,
+} from './redux/gameSlice';
 
 const Container = styled.div`
   display: flex;
@@ -30,12 +38,18 @@ const Inner = styled.div`
 function App() {
   const TICK_RATE: number = 3000;
   const dispatch = useDispatch();
-
-  function tick(): void {
-    dispatch(increment());
-  }
+  const clock = useSelector(selectClock);
+  const wakeTime = useSelector(selectWakeTime);
 
   useEffect(() => {
+    function tick() {
+      console.log(clock);
+      dispatch(incrementClock());
+      if (clock === wakeTime) {
+        dispatch(wake());
+      }
+    }
+
     const intervalId = setInterval(tick, TICK_RATE);
 
     return () => clearInterval(intervalId);

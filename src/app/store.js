@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import clockReducer from '../features/Clock/clockSlice';
+import gameReducer from '../redux/gameSlice';
 
 export default configureStore({
-  reducer: {
-    clock: clockReducer,
-  },
+  reducer: gameReducer,
 });
