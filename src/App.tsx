@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import './App.css';
-import './sprites.css';
 
 import Scene from './features/Scene/Scene';
 import Fox from './features/Fox/Fox';
