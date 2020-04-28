@@ -1,28 +1,10 @@
 import React, { useState } from 'react';
-
-const ICONS: string[] = ['fish-icon', 'poop-icon', 'weather-icon'];
-
-interface IconProps {
-  selectedIcon: number;
-}
-
-export const Icons: React.FC<IconProps> = ({ selectedIcon }) => {
-  const icons = ICONS.map((className, idx) => {
-    const ID = className;
-    if (idx === selectedIcon) className += ' highlighted';
-    return (
-      <div
-        className={`icon ${className}`}
-        key={className}
-        data-testid={ID}
-      ></div>
-    );
-  });
-
-  return <>{icons}</>;
-};
+import Buttons, { LeftButton, MiddleButton, RightButton } from './Buttons';
+import Icons, { FishIcon, PoopIcon, WeatherIcon } from './Icons';
 
 const Menu: React.FC = () => {
+  const ICONS: string[] = ['fish-icon', 'poop-icon', 'weather-icon'];
+
   const [selectedIcon, setSelectedIcon] = useState(0);
 
   function selectPrev(): void {
@@ -41,26 +23,19 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <div className="buttons">
-        <div
-          className="btn left-btn"
-          data-testid="left-btn"
-          onClick={selectPrev}
-        ></div>
-        <div
-          className="btn middle-btn"
-          data-testid="middle-btn"
-          onClick={handleUserAction}
-        ></div>
-        <div
-          className="btn right-btn"
-          data-testid="right-btn"
-          onClick={selectNext}
-        ></div>
-      </div>
-      <div className="icons">
-        <Icons selectedIcon={selectedIcon} />
-      </div>
+      <Buttons>
+        <LeftButton data-testid="left-btn" onClick={selectPrev} />
+        <MiddleButton data-testid="middle-btn" onClick={handleUserAction} />
+        <RightButton data-testid="right-btn" onClick={selectNext} />
+      </Buttons>
+      <Icons>
+        <FishIcon isHighlighted={selectedIcon === 0} data-testid="fish-icon" />
+        <PoopIcon isHighlighted={selectedIcon === 1} data-testid="poop-icon" />
+        <WeatherIcon
+          isHighlighted={selectedIcon === 2}
+          data-testid="weather-icon"
+        />
+      </Icons>
     </>
   );
 };

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherIcon should match the snapshot 1`] = `
+<div
+  className="sc-AxirZ sc-AxhCb kDAImf"
+/>
+`;

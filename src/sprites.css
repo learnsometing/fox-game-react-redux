@@ -1,4 +1,4 @@
-.btn {
+/* .btn {
   background-image: url(bg/BUTTONS/NotSelected.png);
   background-position: 0px;
   width: 62px;
@@ -8,26 +8,26 @@
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
-}
+} */
 
-.btn.middle-btn {
+/* .btn.middle-btn {
   background-position: -84px 0px;
-}
+} */
 
-.btn.right-btn {
+/* .btn.right-btn {
   background-position: -167px 0px;
-}
+} */
 
-.btn:hover,
+/* .btn:hover,
 .btn:focus {
   background-image: url(bg/BUTTONS/Hover.png);
-}
+} */
 
-.btn:active {
+/* .btn:active {
   background-image: url(bg/BUTTONS/Selected.png);
-}
+} */
 
-.icon {
+/* .icon {
   background-image: url(bg/ICONS/NotSelected.png);
   background-position: 0px;
   width: 56px;
@@ -36,23 +36,23 @@
   background-repeat: no-repeat;
   background-color: transparent;
   border-color: transparent;
-}
+} */
 
-.icon.poop-icon {
+/* .icon.poop-icon {
   background-position: -162px 0px;
-}
+} */
 
-.icon.weather-icon {
+/* .icon.weather-icon {
   background-position: -323px 0px;
-}
+} */
 
-.icon.highlighted {
+/* .icon.highlighted {
   background-image: url(bg/ICONS/Hover.png);
-}
+} */
 
-.icon.active {
+/* .icon.active {
   background-image: url(bg/ICONS/Selected.png);
-}
+} */
 
 .fox-static {
   background-image: url(./pet/FoxBase.png);
@@ -209,7 +209,7 @@
   }
 }
 
-.foreground-rain {
+/* .foreground-rain {
   display: none;
   background-image: url(./bg/rain.png);
   animation: raining 0.5s steps(3) infinite;
@@ -219,41 +219,37 @@
   position: absolute;
   top: 56px;
   left: 60px;
-}
+} */
 
-.rain ~ .foreground-rain {
+/* .rain ~ .foreground-rain {
   display: block;
-}
+} */
 
-@keyframes raining {
+/* @keyframes raining {
   to {
     background-position: -1818px;
   }
-}
+} */
 
-.poop-bag {
+/* .poop-bag {
   background-image: url(./pet/PoopBag.png);
   animation: swing-poop-bag 1s steps(3) infinite alternate;
   width: 99px;
   height: 104px;
   overflow: hidden;
-}
+} */
 
-@keyframes swing-poop-bag {
+/* @keyframes swing-poop-bag {
   to {
     background-position: -297px;
   }
-}
+} */
 
-.frame {
-  background-image: url(./bg/FRAME.png);
-}
-
-.game {
+/* .game {
   background-image: url(./bg/DAY.png);
-}
+} */
 
-.game.night {
+/* .game.night {
   background-image: url(./bg/NIGHT.png);
 }
 
@@ -263,7 +259,7 @@
 
 .game.rain {
   background-image: url(./bg/RAINY.png);
-}
+} */
 
 body {
   background-image: url(./bg/Canvas.png);

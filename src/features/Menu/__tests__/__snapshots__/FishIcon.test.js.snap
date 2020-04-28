@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FishIcon should match the snapshot 1`] = `
+.c0 {
+  background-image: url(NotSelected.png);
+  background-position: 0px;
+  width: 56px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.c0:active {
+  background-image: url(Selected.png);
+}
+
+<div
+  className="c0"
+/>
+`;

@@ -1,5 +1,11 @@
-import React from 'react';
+import styled from 'styled-components';
+import frame from './FRAME.png';
 
-const Frame: React.FC = () => <div className="frame"></div>;
+const Frame = styled.div`
+  height: 762px;
+  width: 762px;
+  position: relative;
+  background-image: url(${frame});
+`;
 
 export default Frame;

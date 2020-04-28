@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu should match the snapshot 1`] = `
+Array [
+  .c0 {
+  position: absolute;
+  top: 674px;
+  left: 266px;
+  height: 71px;
+  width: 228px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 {
+  background-image: url(NotSelected.png);
+  background-position: 0px;
+  width: 62px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.c1:hover,
+.c1:focus {
+  background-image: url(Hover.png);
+}
+
+.c1:active {
+  background-image: url(Selected.png);
+}
+
+.c2 {
+  background-image: url(NotSelected.png);
+  background-position: 0px;
+  width: 62px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  background-position: -84px 0px;
+}
+
+.c2:hover,
+.c2:focus {
+  background-image: url(Hover.png);
+}
+
+.c2:active {
+  background-image: url(Selected.png);
+}
+
+.c3 {
+  background-image: url(NotSelected.png);
+  background-position: 0px;
+  width: 62px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  background-position: -167px 0px;
+}
+
+.c3:hover,
+.c3:focus {
+  background-image: url(Hover.png);
+}
+
+.c3:active {
+  background-image: url(Selected.png);
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="c1"
+      data-testid="left-btn"
+      onClick={[Function]}
+    />
+    <div
+      className="c2"
+      data-testid="middle-btn"
+      onClick={[Function]}
+    />
+    <div
+      className="c3"
+      data-testid="right-btn"
+      onClick={[Function]}
+    />
+  </div>,
+  .c0 {
+  position: absolute;
+  top: 572px;
+  left: 194px;
+  height: 67px;
+  width: 374px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  background-image: url(Hover.png);
+  background-position: 0px;
+  width: 56px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.c1:active {
+  background-image: url(Selected.png);
+}
+
+.c2 {
+  background-image: url(NotSelected.png);
+  background-position: 0px;
+  width: 56px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  background-position: -162px 0px;
+}
+
+.c2:active {
+  background-image: url(Selected.png);
+}
+
+.c3 {
+  background-image: url(NotSelected.png);
+  background-position: 0px;
+  width: 56px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  background-position: -323px 0px;
+}
+
+.c3:active {
+  background-image: url(Selected.png);
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="c1"
+      data-testid="fish-icon"
+    />
+    <div
+      className="c2"
+      data-testid="poop-icon"
+    />
+    <div
+      className="c3"
+      data-testid="weather-icon"
+    />
+  </div>,
+]
+`;
