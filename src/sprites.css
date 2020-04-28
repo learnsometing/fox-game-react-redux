@@ -195,7 +195,7 @@
   }
 }
 
-.fox-sleep.fox {
+/* .fox-sleep.fox {
   background-image: url(./pet/Sleeping.png);
   background-repeat: no-repeat;
   width: 250px;
@@ -207,7 +207,7 @@
   to {
     background-position: -1000px;
   }
-}
+} */
 
 /* .foreground-rain {
   display: none;

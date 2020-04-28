@@ -17,6 +17,8 @@ import {
   selectClock,
   wake,
   selectWakeTime,
+  sleep,
+  selectSleepTime,
 } from './redux/gameSlice';
 
 const Container = styled.div`
@@ -39,12 +41,15 @@ function App() {
   const dispatch = useDispatch();
   const clock = useSelector(selectClock);
   const wakeTime = useSelector(selectWakeTime);
+  const sleepTime = useSelector(selectSleepTime);
 
   useEffect(() => {
     function tick() {
       dispatch(incrementClock());
       if (clock === wakeTime) {
         dispatch(wake());
+      } else if (clock === sleepTime) {
+        dispatch(sleep());
       }
     }
 

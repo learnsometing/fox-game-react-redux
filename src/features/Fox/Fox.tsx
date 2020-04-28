@@ -3,12 +3,9 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import egg from './pet/Egg.png';
 import idling from './pet/AtRest.png';
+import sleeping from './pet/Sleeping.png';
 
 import { selectCurrent } from '../../redux/gameSlice';
-
-// interface Props {
-//   isHidden: boolean;
-// }
 
 const InitFox = styled.div`
   display: none;
@@ -54,6 +51,22 @@ const IdlingFox = styled(InitFox)`
   }
 `;
 
+const SleepingFox = styled(InitFox)`
+  display: block;
+  top: 351px;
+  left: 445px;
+  background-image: url(${sleeping});
+  background-repeat: no-repeat;
+  width: 250px;
+  height: 155px;
+  animation: sleeping 4s steps(4) infinite;
+  @keyframes sleeping {
+    to {
+      background-position: -1000px;
+    }
+  }
+`;
+
 const Fox: React.FC = () => {
   const current = useSelector(selectCurrent);
   const [fox, setFox] = useState(<InitFox />);
@@ -65,6 +78,9 @@ const Fox: React.FC = () => {
         break;
       case 'IDLING':
         setFox(<IdlingFox />);
+        break;
+      case 'SLEEPING':
+        setFox(<SleepingFox />);
         break;
     }
   }, [current]);
