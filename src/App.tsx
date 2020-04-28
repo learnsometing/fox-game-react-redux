@@ -5,10 +5,9 @@ import styled from 'styled-components';
 import './App.css';
 import './sprites.css';
 
-import Game from './features/Game/Game';
+import Scene from './features/Scene/Scene';
 import Fox from './features/Fox/Fox';
 import PoopBag from './features/PoopBag/PoopBag';
-import Foreground from './features/Foreground/Foreground';
 import Frame from './features/Frame/Frame';
 import Modal from './features/Modal/Modal';
 import Menu from './features/Menu/Menu';
@@ -43,7 +42,6 @@ function App() {
 
   useEffect(() => {
     function tick() {
-      console.log(clock);
       dispatch(incrementClock());
       if (clock === wakeTime) {
         dispatch(wake());
@@ -58,10 +56,9 @@ function App() {
   return (
     <Container>
       <Inner>
-        <Game />
+        <Scene />
         <Fox />
         <PoopBag isHidden={true} />
-        <Foreground isRaining={false} />
         <Frame />
         <Modal />
         <Menu />
