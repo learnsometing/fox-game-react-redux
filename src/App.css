@@ -100,12 +100,12 @@ body {
 
 /* fox */
 
-.fox {
+/* .fox {
   position: absolute;
   top: 336px;
   left: 285px;
   overflow: hidden;
-}
+} */
 
 .fox-pooping {
   top: 319px;
@@ -129,10 +129,10 @@ body {
   top: 362px;
 }
 
-.fox-egg {
+/* .fox-egg {
   top: 289px;
   left: 248px;
-}
+} */
 
 .fox-sleep {
   top: 351px;

@@ -60,7 +60,7 @@
   height: 165px;
 }
 
-.fox-idling {
+/* .fox-idling {
   background-image: url(./pet/AtRest.png);
   background-repeat: no-repeat;
   width: 117px;
@@ -72,7 +72,7 @@
   to {
     background-position: -372px;
   }
-}
+} */
 
 .fox.fox-pooping {
   background-image: url(./pet/Pooping.png);
@@ -163,23 +163,23 @@
   }
 }
 
-.fox-egg.fox {
+/* .fox-egg.fox {
   background-image: url(./pet/Egg.png);
   background-repeat: no-repeat;
   background-position: -1050px;
   width: 175px;
   height: 217px;
   animation: hatching 4s steps(7);
-}
+} */
 
-@keyframes hatching {
+/* @keyframes hatching {
   from {
     background-position: 0;
   }
   to {
     background-position: -1225px;
   }
-}
+} */
 
 .fox-dead.fox {
   background-image: url(./pet/TombStone.png);
