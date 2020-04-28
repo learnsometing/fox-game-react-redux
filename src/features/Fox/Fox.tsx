@@ -4,8 +4,11 @@ import { useSelector } from 'react-redux';
 import egg from './pet/Egg.png';
 import idling from './pet/AtRest.png';
 import sleeping from './pet/Sleeping.png';
-
-import { selectCurrent } from '../../redux/gameSlice';
+import wet from './pet/Rain.png';
+import hungry from './pet/Hungry.png';
+import eating from './pet/Eating.png';
+import celebrating from './pet/Yay.png';
+import { selectCurrent, selectScene } from '../../redux/gameSlice';
 
 const InitFox = styled.div`
   display: none;
@@ -51,6 +54,22 @@ const IdlingFox = styled(InitFox)`
   }
 `;
 
+const WetFox = styled(InitFox)`
+  display: block;
+  top: 362px;
+  background-image: url(${wet});
+  background-repeat: no-repeat;
+  width: 134px;
+  height: 153px;
+  animation: sit-in-the-rain 2s steps(5) infinite alternate;
+
+  @keyframes sit-in-the-rain {
+    to {
+      background-position: -670px;
+    }
+  }
+`;
+
 const SleepingFox = styled(InitFox)`
   display: block;
   top: 351px;
@@ -67,8 +86,65 @@ const SleepingFox = styled(InitFox)`
   }
 `;
 
+const HungryFox = styled(InitFox)`
+  display: block;
+  /* top: 362px; */
+  background-image: url(${hungry});
+  background-repeat: no-repeat;
+  width: 130px;
+  height: 160px;
+  top: 339px;
+  animation: hungry 1s steps(2) infinite;
+
+  @keyframes hungry {
+    to {
+      background-position: -260px;
+    }
+  }
+`;
+
+const FeedingFox = styled(InitFox)`
+  display: block;
+  /* top: 362px; */
+  background-image: url(${eating});
+  background-position: -1865.7px;
+  background-repeat: no-repeat;
+  width: 207.3px;
+  height: 148px;
+  top: 358px;
+  left: 81px;
+  animation: eating 3s steps(10);
+
+  @keyframes eating {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: -2073px;
+    }
+  }
+`;
+
+const CelebratingFox = styled(InitFox)`
+  display: block;
+  top: 290px;
+  left: 290px;
+  background-image: url(${celebrating});
+  background-repeat: no-repeat;
+  width: 130.8px;
+  height: 213px;
+  animation: celebrate 2s steps(5) infinite;
+
+  @keyframes celebrate {
+    to {
+      background-position: -654px;
+    }
+  }
+`;
+
 const Fox: React.FC = () => {
   const current = useSelector(selectCurrent);
+  const scene = useSelector(selectScene);
   const [fox, setFox] = useState(<InitFox />);
 
   useEffect(() => {
@@ -77,13 +153,26 @@ const Fox: React.FC = () => {
         setFox(<HatchingFox />);
         break;
       case 'IDLING':
-        setFox(<IdlingFox />);
+        if (scene === 'RAINY') {
+          setFox(<WetFox />);
+        } else {
+          setFox(<IdlingFox />);
+        }
         break;
       case 'SLEEPING':
         setFox(<SleepingFox />);
         break;
+      case 'HUNGRY':
+        setFox(<HungryFox />);
+        break;
+      case 'FEEDING':
+        setFox(<FeedingFox />);
+        break;
+      case 'CELEBRATING':
+        setFox(<CelebratingFox />);
+        break;
     }
-  }, [current]);
+  }, [current, scene]);
 
   return fox;
 };

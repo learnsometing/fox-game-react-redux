@@ -100,7 +100,7 @@
   }
 }
 
-.fox-celebrate.fox {
+/* .fox-celebrate.fox {
   background-image: url(./pet/Yay.png);
   background-repeat: no-repeat;
   width: 130.8px;
@@ -112,38 +112,38 @@
   to {
     background-position: -654px;
   }
-}
+} */
 
-.fox-rain.fox {
+/* .fox-rain.fox {
   background-image: url(./pet/Rain.png);
   background-repeat: no-repeat;
   width: 134px;
   height: 153px;
   animation: sit-in-the-rain 2s steps(5) infinite alternate;
-}
+} */
 
-@keyframes sit-in-the-rain {
+/* @keyframes sit-in-the-rain {
   to {
     background-position: -670px;
   }
-}
+} */
 
-.fox-hungry.fox {
+/* .fox-hungry.fox {
   background-image: url(./pet/Hungry.png);
   background-repeat: no-repeat;
   width: 130px;
   height: 160px;
   top: 339px;
   animation: hungry 1s steps(2) infinite;
-}
+} */
 
-@keyframes hungry {
+/* @keyframes hungry {
   to {
     background-position: -260px;
   }
-}
+} */
 
-.fox-eating.fox {
+/* .fox-eating.fox {
   background-image: url(./pet/Eating.png);
   background-position: -1865.7px;
   background-repeat: no-repeat;
@@ -161,7 +161,7 @@
   to {
     background-position: -2073px;
   }
-}
+} */
 
 /* .fox-egg.fox {
   background-image: url(./pet/Egg.png);

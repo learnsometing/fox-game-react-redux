@@ -19,6 +19,14 @@ import {
   selectWakeTime,
   sleep,
   selectSleepTime,
+  getHungry,
+  selectHungryTime,
+  // die,
+  selectDieTime,
+  selectStartCelebratingTime,
+  startCelebrating,
+  selectEndCelebratingTime,
+  endCelebrating,
 } from './redux/gameSlice';
 
 const Container = styled.div`
@@ -42,6 +50,10 @@ function App() {
   const clock = useSelector(selectClock);
   const wakeTime = useSelector(selectWakeTime);
   const sleepTime = useSelector(selectSleepTime);
+  const hungryTime = useSelector(selectHungryTime);
+  const dieTime = useSelector(selectDieTime);
+  const startCelebratingTime = useSelector(selectStartCelebratingTime);
+  const endCelebratingTime = useSelector(selectEndCelebratingTime);
 
   useEffect(() => {
     function tick() {
@@ -50,6 +62,14 @@ function App() {
         dispatch(wake());
       } else if (clock === sleepTime) {
         dispatch(sleep());
+      } else if (clock === hungryTime) {
+        dispatch(getHungry());
+      } else if (clock === dieTime) {
+        // dispatch(die());
+      } else if (clock === startCelebratingTime) {
+        dispatch(startCelebrating());
+      } else if (clock === endCelebratingTime) {
+        dispatch(endCelebrating());
       }
     }
 

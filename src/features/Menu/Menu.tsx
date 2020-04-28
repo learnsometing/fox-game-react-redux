@@ -50,6 +50,7 @@ const Menu: React.FC = () => {
         dispatch(cleanUpPoop());
         break;
       case 'fish-icon':
+        if (current !== 'HUNGRY') break;
         dispatch(feed());
         break;
     }
