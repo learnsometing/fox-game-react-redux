@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { selectCurrent } from '../../redux/gameSlice';
 
 const ModalOuter = styled.div`
   &:empty {
@@ -24,10 +26,29 @@ const ModalInner = styled.div`
   }
 `;
 
-const Modal: React.FC = () => (
-  <ModalOuter>
-    <ModalInner>Press the middle button to start</ModalInner>
-  </ModalOuter>
-);
+const Modal: React.FC = () => {
+  const current = useSelector(selectCurrent);
+  const [modalText, setModalText] = useState('');
+
+  useEffect(() => {
+    switch (current) {
+      case 'DEAD':
+        setModalText('The fox died :( Press the middle button to start');
+        break;
+      case 'INIT':
+        setModalText('Press the middle button to start');
+        break;
+      default:
+        setModalText('');
+        break;
+    }
+  }, [current]);
+
+  return (
+    <ModalOuter>
+      <ModalInner>{modalText}</ModalInner>
+    </ModalOuter>
+  );
+};
 
 export default Modal;

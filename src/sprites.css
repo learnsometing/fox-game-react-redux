@@ -181,19 +181,19 @@
   }
 } */
 
-.fox-dead.fox {
+/* .fox-dead.fox {
   background-image: url(./pet/TombStone.png);
   background-repeat: no-repeat;
   width: 118px;
   height: 119px;
   animation: being-dead 1s steps(3) infinite;
-}
+} */
 
-@keyframes being-dead {
+/* @keyframes being-dead {
   to {
     background-position: -354px;
   }
-}
+} */
 
 /* .fox-sleep.fox {
   background-image: url(./pet/Sleeping.png);

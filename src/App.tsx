@@ -21,7 +21,7 @@ import {
   selectSleepTime,
   getHungry,
   selectHungryTime,
-  // die,
+  die,
   selectDieTime,
   selectStartCelebratingTime,
   startCelebrating,
@@ -68,7 +68,7 @@ function App() {
       } else if (clock === hungryTime) {
         dispatch(getHungry());
       } else if (clock === dieTime) {
-        // dispatch(die());
+        dispatch(die());
       } else if (clock === startCelebratingTime) {
         dispatch(startCelebrating());
       } else if (clock === endCelebratingTime) {

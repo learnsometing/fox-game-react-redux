@@ -9,6 +9,7 @@ import hungry from './pet/Hungry.png';
 import eating from './pet/Eating.png';
 import celebrating from './pet/Yay.png';
 import pooping from './pet/Pooping.png';
+import dead from './pet/TombStone.png';
 import { selectCurrent, selectScene } from '../../redux/gameSlice';
 
 const InitFox = styled.div`
@@ -164,22 +165,36 @@ const PoopingFox = styled(InitFox)`
   }
 `;
 
+const DeadFox = styled(InitFox)`
+  top: 380px;
+  left: 243px;
+  background-image: url(${dead});
+  background-repeat: no-repeat;
+  width: 118px;
+  height: 119px;
+  animation: being-dead 1s steps(3) infinite;
+  @keyframes being-dead {
+    to {
+      background-position: -354px;
+    }
+  }
+`;
+
 const Fox: React.FC = () => {
   const current = useSelector(selectCurrent);
   const scene = useSelector(selectScene);
-  const [fox, setFox] = useState(<InitFox />);
+  const [fox, setFox] = useState(<></>);
 
   useEffect(() => {
     switch (current) {
+      case 'INIT':
+        setFox(<InitFox />);
+        break;
       case 'HATCHING':
         setFox(<HatchingFox />);
         break;
-      case 'IDLING':
-        if (scene === 1) {
-          setFox(<WetFox />);
-        } else {
-          setFox(<IdlingFox />);
-        }
+      case 'DEAD':
+        setFox(<DeadFox />);
         break;
       case 'SLEEPING':
         setFox(<SleepingFox />);
@@ -195,6 +210,13 @@ const Fox: React.FC = () => {
         break;
       case 'POOPING':
         setFox(<PoopingFox />);
+        break;
+      default:
+        if (scene === 1) {
+          setFox(<WetFox />);
+        } else {
+          setFox(<IdlingFox />);
+        }
         break;
     }
   }, [current, scene]);

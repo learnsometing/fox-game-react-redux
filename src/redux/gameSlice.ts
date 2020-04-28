@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const RAIN_CHANCE = 1;
+const RAIN_CHANCE = 0.6;
 const DAY_LENGTH = 60;
 const NIGHT_LENGTH = 3;
 const getNextHungerTime = (clock: number) =>
@@ -9,6 +9,16 @@ const getNextDieTime = (clock: number) =>
   Math.floor(Math.random() * 2) + 3 + clock;
 const getNextPoopTime = (clock: number) =>
   Math.floor(Math.random() * 3) + 4 + clock;
+
+const clearTimes = (state: any) => {
+  state.wakeTime = -1;
+  state.sleepTime = -1;
+  state.hungryTime = -1;
+  state.dieTime = -1;
+  state.poopTime = -1;
+  state.timeToEndCelebrating = -1;
+  state.timeToStartCelebrating = -1;
+};
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -44,6 +54,7 @@ export const gameSlice = createSlice({
     sleep: (state) => {
       state.current = 'SLEEPING';
       state.scene = 2;
+      clearTimes(state);
       state.wakeTime = state.clock + NIGHT_LENGTH;
     },
     changeWeather: (state) => {
@@ -65,9 +76,11 @@ export const gameSlice = createSlice({
       state.dieTime = getNextDieTime(state.clock);
       state.hungryTime = -1;
     },
-    // die: (state) => {
-    //   console.log('ded');
-    // },
+    die: (state) => {
+      state.current = 'DEAD';
+      state.scene = 3;
+      clearTimes(state);
+    },
     startCelebrating: (state) => {
       state.current = 'CELEBRATING';
       state.timeToStartCelebrating = -1;
@@ -95,7 +108,7 @@ export const {
   cleanUpPoop,
   feed,
   getHungry,
-  // die,
+  die,
   startCelebrating,
   endCelebrating,
   poop,
