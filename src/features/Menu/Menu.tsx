@@ -9,7 +9,7 @@ import {
   changeWeather,
   cleanUpPoop,
   feed,
-  startCelebrating,
+  // startCelebrating,
 } from '../../redux/gameSlice';
 
 // gameSlice selectors
@@ -45,12 +45,13 @@ const Menu: React.FC = () => {
     //execute the currently selected action
     switch (icon) {
       case 'weather-icon':
-        if (current !== 'DEAD') dispatch(changeWeather());
+        if (current !== 'DEAD' || current !== 'SLEEPING')
+          dispatch(changeWeather());
         break;
       case 'poop-icon':
         if (current === 'POOPING') {
           dispatch(cleanUpPoop());
-          dispatch(startCelebrating());
+          // dispatch(startCelebrating());
         }
         break;
       case 'fish-icon':
