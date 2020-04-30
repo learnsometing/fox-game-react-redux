@@ -37,9 +37,9 @@ export const FishIcon = styled.div<IconProps>`
 `;
 
 export const PoopIcon = styled(FishIcon)`
-  background-position: -162px 0px;
+  background-position: -162px;
 `;
 
 export const WeatherIcon = styled(FishIcon)`
-  background-position: -323px 0px;
+  background-position: -323px;
 `;
