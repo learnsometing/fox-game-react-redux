@@ -150,7 +150,7 @@ Array [
   background-repeat: no-repeat;
   background-color: transparent;
   border-color: transparent;
-  background-position: -162px 0px;
+  background-position: -162px;
 }
 
 .c2:active {
@@ -166,7 +166,7 @@ Array [
   background-repeat: no-repeat;
   background-color: transparent;
   border-color: transparent;
-  background-position: -323px 0px;
+  background-position: -323px;
 }
 
 .c3:active {
