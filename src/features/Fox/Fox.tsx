@@ -183,12 +183,16 @@ const DeadFox = styled(InitFox)`
 const Fox: React.FC = () => {
   const current = useSelector(selectCurrent);
   const scene = useSelector(selectScene);
-  const [fox, setFox] = useState(<></>);
+  const [fox, setFox] = useState(<InitFox />);
 
   useEffect(() => {
     switch (current) {
-      case 'INIT':
-        setFox(<InitFox />);
+      case 'IDLING':
+        if (scene === 1) {
+          setFox(<WetFox />);
+        } else {
+          setFox(<IdlingFox />);
+        }
         break;
       case 'HATCHING':
         setFox(<HatchingFox />);
@@ -210,13 +214,6 @@ const Fox: React.FC = () => {
         break;
       case 'POOPING':
         setFox(<PoopingFox />);
-        break;
-      default:
-        if (scene === 1) {
-          setFox(<WetFox />);
-        } else {
-          setFox(<IdlingFox />);
-        }
         break;
     }
   }, [current, scene]);
