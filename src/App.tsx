@@ -11,24 +11,7 @@ import Frame from './features/Frame/Frame';
 import Modal from './features/Modal/Modal';
 import Menu from './features/Menu/Menu';
 
-import {
-  incrementClock,
-  selectClock,
-  wake,
-  selectWakeTime,
-  sleep,
-  selectSleepTime,
-  getHungry,
-  selectHungryTime,
-  die,
-  selectDieTime,
-  selectStartCelebratingTime,
-  startCelebrating,
-  selectEndCelebratingTime,
-  endCelebrating,
-  poop,
-  selectPoopTime,
-} from './redux/gameSlice';
+import * as gameSlice from './redux/gameSlice';
 
 const Container = styled.div`
   display: flex;
@@ -47,33 +30,36 @@ const Inner = styled.div`
 
 function App() {
   const TICK_RATE: number = 3000;
+
   const dispatch = useDispatch();
-  const clock = useSelector(selectClock);
-  const wakeTime = useSelector(selectWakeTime);
-  const sleepTime = useSelector(selectSleepTime);
-  const hungryTime = useSelector(selectHungryTime);
-  const dieTime = useSelector(selectDieTime);
-  const startCelebratingTime = useSelector(selectStartCelebratingTime);
-  const endCelebratingTime = useSelector(selectEndCelebratingTime);
-  const poopTime = useSelector(selectPoopTime);
+  const clock = useSelector(gameSlice.selectClock);
+  const wakeTime = useSelector(gameSlice.selectWakeTime);
+  const sleepTime = useSelector(gameSlice.selectSleepTime);
+  const hungryTime = useSelector(gameSlice.selectHungryTime);
+  const dieTime = useSelector(gameSlice.selectDieTime);
+  const startCelebratingTime = useSelector(
+    gameSlice.selectStartCelebratingTime
+  );
+  const endCelebratingTime = useSelector(gameSlice.selectEndCelebratingTime);
+  const poopTime = useSelector(gameSlice.selectPoopTime);
 
   useEffect(() => {
     function tick() {
-      dispatch(incrementClock());
+      dispatch(gameSlice.incrementClock());
       if (clock === wakeTime) {
-        dispatch(wake());
+        dispatch(gameSlice.wake());
       } else if (clock === sleepTime) {
-        dispatch(sleep());
+        dispatch(gameSlice.sleep());
       } else if (clock === hungryTime) {
-        dispatch(getHungry());
+        dispatch(gameSlice.getHungry());
       } else if (clock === dieTime) {
-        dispatch(die());
+        dispatch(gameSlice.die());
       } else if (clock === startCelebratingTime) {
-        dispatch(startCelebrating());
+        dispatch(gameSlice.startCelebrating());
       } else if (clock === endCelebratingTime) {
-        dispatch(endCelebrating());
+        dispatch(gameSlice.endCelebrating());
       } else if (clock === poopTime) {
-        dispatch(poop());
+        dispatch(gameSlice.poop());
       }
     }
 

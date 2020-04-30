@@ -99,6 +99,8 @@ export const gameSlice = createSlice({
   },
 });
 
+// actions on the store
+
 export const {
   incrementClock,
   startGame,
@@ -114,6 +116,7 @@ export const {
   poop,
 } = gameSlice.actions;
 
+// state selectors
 export const selectCurrent = (state: any) => state.current;
 export const selectClock = (state: any) => state.clock;
 export const selectWakeTime = (state: any) => state.wakeTime;
@@ -127,4 +130,5 @@ export const selectEndCelebratingTime = (state: any) =>
   state.timeToEndCelebrating;
 export const selectPoopTime = (state: any) => state.poopTime;
 export const selectTogglePoopBag = (state: any) => state.togglePoopBag;
+
 export default gameSlice.reducer;
