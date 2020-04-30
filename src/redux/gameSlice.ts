@@ -55,6 +55,7 @@ export const gameSlice = createSlice({
       state.current = 'SLEEPING';
       state.scene = 2;
       clearTimes(state);
+      state.togglePoopBag = false;
       state.wakeTime = state.clock + NIGHT_LENGTH;
     },
     changeWeather: (state) => {
