@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 
 import './App.css';
@@ -11,24 +10,7 @@ import Frame from './features/Frame/Frame';
 import Modal from './features/Modal/Modal';
 import Menu from './features/Menu/Menu';
 
-import {
-  incrementClock,
-  selectClock,
-  wake,
-  selectWakeTime,
-  sleep,
-  selectSleepTime,
-  getHungry,
-  selectHungryTime,
-  die,
-  selectDieTime,
-  selectStartCelebratingTime,
-  startCelebrating,
-  selectEndCelebratingTime,
-  endCelebrating,
-  poop,
-  selectPoopTime,
-} from './redux/gameSlice';
+import useClock from './hooks/useClock';
 
 const Container = styled.div`
   display: flex;
@@ -46,42 +28,7 @@ const Inner = styled.div`
 `;
 
 function App() {
-  const TICK_RATE: number = 3000;
-  const dispatch = useDispatch();
-  const clock = useSelector(selectClock);
-  const wakeTime = useSelector(selectWakeTime);
-  const sleepTime = useSelector(selectSleepTime);
-  const hungryTime = useSelector(selectHungryTime);
-  const dieTime = useSelector(selectDieTime);
-  const startCelebratingTime = useSelector(selectStartCelebratingTime);
-  const endCelebratingTime = useSelector(selectEndCelebratingTime);
-  const poopTime = useSelector(selectPoopTime);
-
-  useEffect(() => {
-    function tick() {
-      dispatch(incrementClock());
-      if (clock === wakeTime) {
-        dispatch(wake());
-      } else if (clock === sleepTime) {
-        dispatch(sleep());
-      } else if (clock === hungryTime) {
-        dispatch(getHungry());
-      } else if (clock === dieTime) {
-        dispatch(die());
-      } else if (clock === startCelebratingTime) {
-        dispatch(startCelebrating());
-      } else if (clock === endCelebratingTime) {
-        dispatch(endCelebrating());
-      } else if (clock === poopTime) {
-        dispatch(poop());
-      }
-    }
-
-    const intervalId = setInterval(tick, TICK_RATE);
-
-    return () => clearInterval(intervalId);
-  });
-
+  useClock();
   return (
     <Container>
       <Inner>

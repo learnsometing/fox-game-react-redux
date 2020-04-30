@@ -62,8 +62,11 @@ export const gameSlice = createSlice({
     },
     cleanUpPoop: (state) => {
       state.dieTime = -1;
-      state.hungryTime = getNextHungerTime(state.clock);
       state.togglePoopBag = true;
+      state.current = 'CELEBRATING';
+      state.timeToStartCelebrating = -1;
+      state.timeToEndCelebrating = state.clock + 2;
+      state.hungryTime = getNextHungerTime(state.clock);
     },
     feed: (state) => {
       state.current = 'FEEDING';
@@ -87,8 +90,8 @@ export const gameSlice = createSlice({
       state.timeToEndCelebrating = state.clock + 2;
     },
     endCelebrating: (state) => {
-      state.current = 'IDLING';
       state.timeToEndCelebrating = -1;
+      state.current = 'IDLING';
       state.togglePoopBag = false;
     },
     poop: (state) => {
@@ -98,6 +101,8 @@ export const gameSlice = createSlice({
     },
   },
 });
+
+// actions on the store
 
 export const {
   incrementClock,
@@ -114,6 +119,7 @@ export const {
   poop,
 } = gameSlice.actions;
 
+// state selectors
 export const selectCurrent = (state: any) => state.current;
 export const selectClock = (state: any) => state.clock;
 export const selectWakeTime = (state: any) => state.wakeTime;
@@ -127,4 +133,5 @@ export const selectEndCelebratingTime = (state: any) =>
   state.timeToEndCelebrating;
 export const selectPoopTime = (state: any) => state.poopTime;
 export const selectTogglePoopBag = (state: any) => state.togglePoopBag;
+
 export default gameSlice.reducer;
